@@ -52,10 +52,11 @@ export function Formulario(){
                     id="Genero"
                     select
                     label="Select"
-                    defaultValue="1"
-                    helperText="Por favor seleccione su género"
+                    defaultValue="0"
+                    helperText={errors.Genero?.message}
                     fullWidth
-                    {...register("Genero", { required: true })}
+                    error = {!!errors.Genero}
+                    {...register("Genero", { required: 'El Genero es necesario', min: 1 })}
                   >
                     {options.map((option) => (
                       <MenuItem key={option.value} value={option.value}>
