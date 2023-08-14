@@ -36,7 +36,7 @@ export function Asientos () {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg" sx={{mt: 3}}>
       <Paper elevation={3} style={{ padding: '20px' }}>
         <Grid container spacing={2} justifyContent="center">
           <Grid item>

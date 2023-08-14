@@ -4,16 +4,19 @@ import { Formulario } from "./pages/Formulario"
 import { Asientos } from "./pages/Asientos"
 
 function App() {
+
+
+
   return (
     <div>
-      <BrowserRouter>
-      <AppBarCoponent />
-      <Routes>
-        <Route path="/home" element={<h1>Home</h1>} />
-        <Route path="/formulario" element={<Formulario />} />
-        <Route path="/Asientos" element={<Asientos />} />
-      </Routes>
-      </BrowserRouter>
+          <BrowserRouter>
+          <AppBarCoponent />
+          <Routes>
+            <Route path="/home" element={<h1>Home</h1>} />
+            <Route path="/formulario" element={<Formulario />} />
+            <Route path="/Asientos" element={<Asientos />} />
+          </Routes>
+          </BrowserRouter>
     </div>
   )
 }

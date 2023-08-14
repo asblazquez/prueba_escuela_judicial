@@ -6,8 +6,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import './index.css'
-import { CssBaseline, createTheme } from '@mui/material';
-import { ThemeProvider } from '@emotion/react';
+import { CssBaseline } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const darkTheme = createTheme({
   palette: {
