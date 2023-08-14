@@ -15,7 +15,7 @@ export function Asientos () {
   };
 
   const renderSeats = () => {
-    const totalSeats = 50;
+    const totalSeats = 100;
     const seats = [];
 
     for (let i = 1; i <= totalSeats; i++) {
@@ -41,6 +41,7 @@ export function Asientos () {
         <Grid container spacing={2} justifyContent="center">
           <Grid item>
             <EventSeatIcon />
+            {selectedSeats.length}
           </Grid>
           <Grid item>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)' }}>
