@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,25 +11,101 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import Drawer from '@mui/material/Drawer';
 import { Link } from 'react-router-dom';
+import LateralMenu from './LateralMenu';
+import { Divider } from '@mui/material';
 
 const pages = ['Home', 'Formulario', 'Asientos', 'Tabla'];
 const settings = ['Perfil', 'Cerrar sesión', 'Ajustes'];
 
 function AppBarCoponent() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [ anchordLateralMenu, setAnchordLateralMenu ] = useState(false)
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
+  const optionsCursosFormacion = [
+    {
+      name: 'Convocatoria de Cursos',
+      to: '/convocatoriaCursos'
+    },
+    {
+      name: 'Criterios de Seleccion',
+      to: '/criteriosSeleccion'
+    },
+    {
+      name: 'Modulos de Seleccion',
+      to: '/modulosSelccion'
+    },
+    {
+      name: 'Catalogo de Actividades',
+      to: '/catalogoActividades'
+    },
+    {
+      name: 'Gestion de Dietas',
+      to: '/gestionDietas'
+    },
+    {
+      name: 'Gestion de Informes',
+      to: '/gestionInformes'
+    },
+    {
+      name: 'Gestion de Alumnos',
+      to: '/gestionAlumnos'
+    },
+    {
+      name: 'CENDOJ. Centro de Documentacion Judicial',
+      to: '/CENDOJCentroDocJudicial'
+    }
+  ]
+
+  const optionsAulaIberoAmericana = [
+    {
+      name: 'Convocatoria de Cursos',
+      to: '/convocatoriaCursos'
+    },
+    {
+      name: 'Criterios de Seleccion',
+      to: '/criteriosSeleccion'
+    },
+    {
+      name: 'Modulos de Seleccion',
+      to: '/modulosSelccion'
+    },
+    {
+      name: 'Catalogo de Actividades',
+      to: '/catalogoActividades'
+    },
+    {
+      name: 'Gestion de Dietas',
+      to: '/gestionDietas'
+    }
+  ]
+
+  const optionsEntregaDespachos = [
+    {
+      name: 'Invitaciones',
+      to: '/invitaciones'
+    },
+    {
+      name: 'Organizacion de los asistentes',
+      to: '/organizacionAsistentes'
+    },
+    {
+      name: 'Gestion de entradas invitados',
+      to: '/gestionEntradasInvitados'
+    },
+    {
+      name: 'Cambio de estado',
+      to: '/cambioEstado'
+    },
+    {
+      name: 'Asignacion de plazas de destino',
+      to: '/asignacionPlazasDestino'
+    }
+  ]
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
@@ -39,95 +115,50 @@ function AppBarCoponent() {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu} component={Link} to={'/' + page}>
-                  {page.charAt(0).toUpperCase() + page.slice(1).toLowerCase()}
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-                component={Link}
-                to={'/' + page}
-              >
-                {page.charAt(0).toUpperCase() + page.slice(1).toLowerCase()}
+        <Toolbar disableGutters>       
+          <Box sx={{ flexGrow: 1, display: 'flex' }}>
+            <Fragment key={'left'}>
+              <Button onClick={() => { setAnchordLateralMenu(true) }}>
+                <MenuIcon />
               </Button>
-            ))}
+                <Drawer
+                  anchor={'left'}
+                  open={anchordLateralMenu}
+                  onClose={() => { setAnchordLateralMenu(false) }}>
+                <Typography mt={3} variant='h6' sx={{padding: '0.25rem', paddingLeft: '0.5rem', color: 'grey'}}>REI Europa</Typography>
+                <Divider />
+                <LateralMenu tittle='Cursos Formacion' options={optionsCursosFormacion} />
+                <MenuItem component={Link} to='visitasInstitucionales'>Visitas Intitucionales</MenuItem>
+                <MenuItem component={Link} to='intercambioAutoridadesJudiciales'>Intercambio de autoridades judiciales</MenuItem>
+                <Typography mt={3} variant='h6' sx={{padding: '0.25rem', paddingLeft: '0.5rem', color: 'grey'}}>REI Iberoamericana</Typography>
+                <Divider />
+                <LateralMenu tittle='Aula Iberoamericana' options={optionsAulaIberoAmericana} />
+                <MenuItem component={Link} to='formacionJudicialEspeciealizada'>Formacion judicial especiealizada</MenuItem>  
+                <MenuItem component={Link} to='visitasInstitucionales'>Visitas Intitucionales</MenuItem>
+                <Divider />
+                <Typography mt={3} variant='h6' sx={{padding: '0.25rem', paddingLeft: '0.5rem', color: 'grey'}}>Entrega de Despachos</Typography>
+                <LateralMenu tittle='Entrega Despachos' options={optionsEntregaDespachos} />
+              </Drawer>
+            </Fragment>            
+            <Box>
+              <Typography
+                variant="h5"
+                noWrap
+                component="a"
+                href="/"
+                sx={{
+                  mr: 2,
+                  flexGrow: 1,
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}>
+                Escuela Judicial
+              </Typography>
+            </Box>
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
