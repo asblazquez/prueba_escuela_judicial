@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 
-const pages = ['Home', 'Formulario', 'Asientos'];
+const pages = ['Home', 'Formulario', 'Asientos', 'Tabla'];
 const settings = ['Perfil', 'Cerrar sesión', 'Ajustes'];
 
 function AppBarCoponent() {

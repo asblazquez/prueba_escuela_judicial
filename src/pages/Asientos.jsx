@@ -15,7 +15,7 @@ export function Asientos () {
   };
 
   const renderSeats = () => {
-    const totalSeats = 100;
+    const totalSeats = 40;
     const seats = [];
 
     for (let i = 1; i <= totalSeats; i++) {
