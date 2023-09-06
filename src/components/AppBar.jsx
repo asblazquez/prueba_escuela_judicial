@@ -15,8 +15,6 @@ import Drawer from '@mui/material/Drawer';
 import { Link } from 'react-router-dom';
 import LateralMenu from './LateralMenu';
 import { Divider } from '@mui/material';
-
-const pages = ['Home', 'Formulario', 'Asientos', 'Tabla'];
 const settings = ['Perfil', 'Cerrar sesión', 'Ajustes'];
 
 function AppBarCoponent() {
@@ -118,7 +116,7 @@ function AppBarCoponent() {
         <Toolbar disableGutters>       
           <Box sx={{ flexGrow: 1, display: 'flex' }}>
             <Fragment key={'left'}>
-              <Button onClick={() => { setAnchordLateralMenu(true) }}>
+              <Button sx={{color: 'white'}}>
                 <MenuIcon />
               </Button>
                 <Drawer
@@ -128,7 +126,7 @@ function AppBarCoponent() {
                 <Typography mt={3} variant='h6' sx={{padding: '0.25rem', paddingLeft: '0.5rem', color: 'grey'}}>REI Europa</Typography>
                 <Divider />
                 <LateralMenu tittle='Cursos Formacion' options={optionsCursosFormacion} />
-                <MenuItem component={Link} to='visitasInstitucionales'>Visitas Intitucionales</MenuItem>
+                <MenuItem component={Link} to='visitasInstitucionales' onClick={() => {}}>Visitas Intitucionales</MenuItem>
                 <MenuItem component={Link} to='intercambioAutoridadesJudiciales'>Intercambio de autoridades judiciales</MenuItem>
                 <Typography mt={3} variant='h6' sx={{padding: '0.25rem', paddingLeft: '0.5rem', color: 'grey'}}>REI Iberoamericana</Typography>
                 <Divider />
@@ -138,6 +136,11 @@ function AppBarCoponent() {
                 <Divider />
                 <Typography mt={3} variant='h6' sx={{padding: '0.25rem', paddingLeft: '0.5rem', color: 'grey'}}>Entrega de Despachos</Typography>
                 <LateralMenu tittle='Entrega Despachos' options={optionsEntregaDespachos} />
+                <Divider />
+                <Typography mt={3} variant='h6' sx={{padding: '0.25rem', paddingLeft: '0.5rem', color: 'grey'}}>Pruebas</Typography>
+                <MenuItem component={Link} to='tabla'>Tabla</MenuItem>
+                <MenuItem component={Link} to='asientos'>Asientos</MenuItem>
+                <MenuItem component={Link} to='formulario'>Formulario</MenuItem>
               </Drawer>
             </Fragment>            
             <Box>
@@ -147,13 +150,12 @@ function AppBarCoponent() {
                 component="a"
                 href="/"
                 sx={{
-                  mr: 2,
                   flexGrow: 1,
                   fontFamily: 'monospace',
                   fontWeight: 700,
-                  letterSpacing: '.3rem',
                   color: 'inherit',
                   textDecoration: 'none',
+                  display: { xs: 'none', md: 'flex' }
                 }}>
                 Escuela Judicial
               </Typography>
