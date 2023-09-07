@@ -18,7 +18,7 @@ export default function LateralMenu(props) {
     return (
         <MenuItem>
             <Button
-                sx={{justifyContent: 'start', margin: '0', paddingLeft: '0', padding:'0', color: 'white', fontSize: '0.90rem', fontWeight: '400'}}
+                sx={{justifyContent: 'start', margin: '0', padding:'0', color: 'white', fontSize: '0.90rem', fontWeight: '400'}}
                 fullWidth
                 id={tittle}
                 aria-controls={open ? 'basic-menu' : undefined}

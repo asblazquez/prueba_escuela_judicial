@@ -18,7 +18,7 @@ import { Divider } from '@mui/material';
 const settings = ['Perfil', 'Cerrar sesión', 'Ajustes'];
 
 function AppBarCoponent() {
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [ anchorElUser, setAnchorElUser ] = useState(null);
   const [ anchordLateralMenu, setAnchordLateralMenu ] = useState(false)
 
   const optionsCursosFormacion = [
@@ -116,7 +116,7 @@ function AppBarCoponent() {
         <Toolbar disableGutters>       
           <Box sx={{ flexGrow: 1, display: 'flex' }}>
             <Fragment key={'left'}>
-              <Button sx={{color: 'white'}}>
+              <Button sx={{color: 'white'}} onClick={() => { setAnchordLateralMenu(true) }}>
                 <MenuIcon />
               </Button>
                 <Drawer
@@ -157,7 +157,7 @@ function AppBarCoponent() {
                   textDecoration: 'none',
                   display: { xs: 'none', md: 'flex' }
                 }}>
-                Escuela Judicial
+                Pruebas
               </Typography>
             </Box>
           </Box>
